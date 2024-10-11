@@ -6,6 +6,16 @@ name = "pypi"
 [packages]
 
 [dev-packages]
+pytest = "*"
+selenium = "*"
+webdriver-manager = "*"
+pytest-selenium = "*"
+pytest-xdist = "*"
 
 [requires]
 python_version = "3.13"
+
+[scripts]
+test = "pytest -v -s -n auto"
+testname = "pytest -v -s -k"
+testmark = "pytest -v -s -m"
