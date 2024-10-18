@@ -1,17 +1,15 @@
 from pages.base_page import BasePage
-from selenium.webdriver.common.by import By
+from locators.cart_page_locators import CartPageLocators
 
 
 class CartPage(BasePage):
-    item_quantity_locator = (By.CSS_SELECTOR, 'div[data-test="item-quantity"]')
-    checkout_button_locator = (By.ID, "checkout")
-    checkout_form_page_url = "https://www.saucedemo.com/checkout-step-one.html"
+    cart_page = CartPageLocators()
 
     def __init__(self, driver):
         super().__init__(driver)
 
     def get_item_count(self) -> int:
-        elements = self.find_elements(*self.item_quantity_locator)
+        elements = self.find_elements(*self.cart_page.item_quantity_locator)
         return len(elements)
 
     def verify_cart_item_count_is_correct(self, expected_item_count: int) -> bool:
@@ -19,5 +17,5 @@ class CartPage(BasePage):
         return actual_item_count == expected_item_count
 
     def continue_to_complete_checkout(self):
-        self.find_element(*self.checkout_button_locator).click()
-        assert self.is_url_opened(self.checkout_form_page_url)
+        self.find_element(*self.cart_page.checkout_button_locator).click()
+        assert self.is_url_opened(self.cart_page.checkout_form_page_url)
