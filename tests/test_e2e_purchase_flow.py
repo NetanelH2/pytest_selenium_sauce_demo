@@ -1,9 +1,11 @@
+import pytest
 from pages.products_page import ProductsPage
 from pages.checkout_page import CheckOutPage
 from data.product_data import product_details
 from pages.cart_page import CartPage
 
 
+@pytest.mark.e2e
 def test_e2e_purchase_flow(login_fixture):
     # Navigate to Products Page
     product_page = ProductsPage(login_fixture)

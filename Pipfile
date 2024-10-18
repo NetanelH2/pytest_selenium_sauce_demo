@@ -12,11 +12,16 @@ webdriver-manager = "*"
 pytest-selenium = "*"
 pytest-xdist = "*"
 faker = "*"
+coverage = "*"
+allure-pytest = "*"
 
 [requires]
 python_version = "3.13"
 
 [scripts]
-test = "pytest -v -s -n auto"
-testname = "pytest -v -s -k"
-testmark = "pytest -v -s -m"
+# Runs with "pipenv run _____"
+serial = "pytest -v -s"
+parallel = "pytest -v -s -n auto"
+name = "pytest -v -s -k"
+mark = "pytest -v -s -m"
+report = "allure serve allure-results"

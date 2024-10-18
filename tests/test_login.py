@@ -2,7 +2,7 @@ import pytest
 from pages.login_page import LoginPage
 from data.user_data import user_data
 
-
+@pytest.mark.smoke
 @pytest.mark.parametrize("username, password, expected_error_message", user_data)
 def test_login(driver, username, password, expected_error_message):
     login_page = LoginPage(driver)
